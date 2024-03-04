@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        button {
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+
+<body class="w-screen h-screen bg-slate-100 scroll-off">
+    <nav class="nav w-full h-auto bg-slate-200 mx-auto p-3 flex justify-between item-center">
+        <ul class="flex">
+            <li class="w-14 h-auto"><a href="./index.html"><img class="rounded-full"
+                        src="data:image/png;base64,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"
+                        alt="LOGO"></a></li>
+            <li class="ml-4 p-2"><a href="./index.html">Home</a></li>
+            <li class="ml-4 p-2"><a href="#quiz-1">Quiz</a></li>
+            <li class="ml-4 p-2"><a href="#score">Score</a></li>
+        </ul>
+        <ul class="flex">
+            <li class="ml-4 p-2"><a href="">Signup</a></li>
+            <li class="ml-4 p-2"><a href="">Login</a></li>
+            <li class="w-14 h-auto"><a href="./index.html"><img class="rounded-full"
+                        src="data:image/png;base64,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"
+                        alt="LOGO"></a></li>
+        </ul>
+    </nav>
+    <!--Start Button for Quiz-->
+    <button class="ml-[40%] mt-[3%] bg-slate-800 text-slate-50 px-3 py-1.5 rounded-lg hover:bg-slate-950 hover:text-slate-100" id="start-btn">Start Quiz</button> 
+    <!--Dynamic div 01-->
+    <div class="conatiner w-[60%] h-[70%] bg-slate-200 border-2 border-slate-300 mx-auto hidden" id="quiz">
+            <div class="aap bg-slate-800 text-slate-50 rounded">
+                <h1 class="name mx-auto flex justify-center item-center m-2 font-semibold">Quiz App</h1>
+                <div class="bottom-part flex justify-between item-center m-5">
+                    <h4 id="question-no">Question: <span id="quizNum">0</span>/<span id="totalQuiz">10</span></h4>
+                    <h4  id="normalScore">Score :<span id="exectScore">0</span> </h4>
+                </div>
+            </div>
+            <div class="quiz ml-3">
+                <h2 class="font-semibold" id="question"></h2>
+                <div class="" id="answer-buttons">
+                    <button class="btn" id="btn"></button>
+                    <button class="btn" id="btn"></button>
+                    <button class="btn" id="btn"></button>
+                    <button class="btn" id="btn"></button>
+                </div>
+            </div>
+            <button
+                class="ml-[40%] mt-[3%] bg-slate-800 text-slate-50 px-3 py-1.5 rounded-lg hover:bg-slate-950 hover:text-slate-100"
+                id="next-btn">Next</button>
+    </div>
+    <h3 id="result"></h3> 
+    <div id="wining">
+        <img id="win" class="hidden" src="https://images.unsplash.com/photo-1578269174936-2709b6aeb913?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    </div>
+   
+    <script src="script.js"></script>
+</body>
+
+</html>
