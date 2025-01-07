@@ -1,5 +1,5 @@
-# Tier_List_App
 [tier_List_App](https://mrcsghosh.github.io/tier_List_App/)
+# Tier_List_App
 # Drag and Drop Tier List App
  This is a drag and drop based tier list app that allows users to create and customize their own tier lists. Users can easily drag and drop items into different tiers, making it convenient 
  to organize and rank various elements.
