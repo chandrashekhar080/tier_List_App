@@ -1,10 +1,8 @@
 console.log("Mrcs Tier Maker App !!!");
 
+let currentDraggedItem;
 
 //First complete the Adding New Tier part
-const newTierInput = document.querySelector("#tier");
-
-const submitBut = document.querySelector("#submit");
 
 // const tierSection = document.getElementsByClassName('tier-section');
 
@@ -13,10 +11,23 @@ const submitBut = document.querySelector("#submit");
 // const newTier = document.querySelector("#new-tier");
 
 // const newImg = document.querySelector("#new-img");
+const newTierInput = document.querySelector("#tier");
 
+const itemcontainers = document.getElementsByClassName('tier-img');
 
+const submitBut = document.querySelector("#submit");
+
+const tierLists = document.querySelectorAll('.tier-list');
+
+//for drag feature
+for (const itemcontainer of itemcontainers) {
+    setupItemContainerForDragDrop(itemcontainer);
+};
+//for drop feature
+//tierLists.forEach(setUpDropZoneForTierLists);
+//instent of above method we use another inside createTierList function
 submitBut.addEventListener('click', (event) => {
-    console.log("inside tier");
+   // console.log("inside tier");
     event.preventDefault();
    
    if(newTierInput.value === ''){
@@ -31,7 +42,6 @@ submitBut.addEventListener('click', (event) => {
   
 });
 
-
 function createTierList(){
     const tierContainer = document.getElementById('section-tier');
     // const newTier = document.querySelector("#new-tier");
@@ -39,26 +49,27 @@ function createTierList(){
     const tierContainerDiv = document.createElement('div');
     tierContainerDiv.classList.add('tier-list');
 
-
+    const tierName = document.createElement('h1');
+    tierName.classList.add('tier-name');
 
     const tierItem =  document.createElement('div');
     tierItem.classList.add('tier-item');
 
-    tierItem.textContent = newTierInput.value;
+    tierName.textContent = newTierInput.value;
+
+    
     tierContainer.appendChild(tierContainerDiv);
+    tierContainerDiv.appendChild(tierName);
     tierContainerDiv.appendChild(tierItem);
     // console.log(tierItem.textContent);
-    const br = document.createElement('br');
-    tierContainer.appendChild(br);
+    
+    setUpDropZoneForTierLists(tierItem);
+    //console.log(tierItem);
 };
-
-
 
 //Second complete the Adding New Tier imgs
 const imgForm = document.getElementById('img-form');
-
 const imgUrl = document.getElementById('tier-img');
-
 
 imgForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -75,18 +86,47 @@ imgForm.addEventListener('submit', (event) => {
     
 });
 
-
 function createTierListItem(){
     // const imgContainer = document.getElementById('section-tier-img');
     
     const imgContainerDiv = document.getElementById('new-img');
 
     const newTierImg = document.createElement('img');
-    newTierImg.classList.add('tier-img');
-
-    // imgContainer.appendChild(imgContainerDiv);
-    imgContainerDiv.appendChild(newTierImg);
-    newTierImg.src = imgUrl.value;
-
+    newTierImg.setAttribute('draggable', true);
+        newTierImg.classList.add('tier-img');
+        
+        // imgContainer.appendChild(imgContainerDiv);
+        imgContainerDiv.appendChild(newTierImg);
+        newTierImg.src = imgUrl.value;
+        setupItemContainerForDragDrop(newTierImg);
+    
+    
 };
 
+function setupItemContainerForDragDrop(newTierImg){
+    newTierImg.addEventListener('dragstart', (event) => {
+        currentDraggedItem = event.target; //parentNode
+        //console.log(event.target); //parentNode
+
+        
+    });
+};
+
+function setUpDropZoneForTierLists(tierItem){
+    tierItem.addEventListener('drag', (event) => {
+        event.preventDefault(); //stop the default behavior of browser which are not allow to drop anything to anywhere
+       // console.log('dragging');
+        
+  });
+
+  tierItem.addEventListener('dragover', function(event) { //when we drag over the drop zone is called
+    console.log("Darg Event is" , event);
+    
+    //console.log("darg over happens on drop Zone");
+    //  event.target.appendChild(currentDraggedItem);
+    if (this !== currentDraggedItem) {
+        this.appendChild(currentDraggedItem);
+        
+    }
+    });
+};
