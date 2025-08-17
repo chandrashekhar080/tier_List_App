@@ -11,9 +11,9 @@ Item Management: Easily add, remove, and edit items within each tier.
 
 # Screenshots
 ![First_UI](https://github.com/user-attachments/assets/145fea5c-48cb-4757-9fd2-9241186c2983)
-![With_Details](https://github.com/user-attachments/assets/3cf867e5-2d61-4ff4-ae1b-755aaf39dd48)
+<!-- ![With_Details](https://github.com/user-attachments/assets/3cf867e5-2d61-4ff4-ae1b-755aaf39dd48)
 ![Drag Drop](https://github.com/user-attachments/assets/2cfe423f-d2bf-47cf-9fd5-7eea12149b5f)
-![Tier_List](https://github.com/user-attachments/assets/77c2fd81-799e-434b-9c13-eabb2e07577d)
+![Tier_List](https://github.com/user-attachments/assets/77c2fd81-799e-434b-9c13-eabb2e07577d) -->
 
 # nstallation
 1. Clone the repository: git clone https://github.com/mrcsghosh/tier_List_App.git
